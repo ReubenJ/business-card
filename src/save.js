@@ -27,7 +27,7 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const {
 		className,
-		attributes: { fullName, mediaID, mediaURL, website, phone, address },
+		attributes: { fullName, mediaID, mediaURL, website, phone, address, style, backgroundColor, textColor },
 		setAttributes,
 	} = props;
 	var websiteToLink = website;
@@ -37,7 +37,7 @@ export default function save( props ) {
 	}
 	}
 	return (
-		<div className="wp-block-reubenj-business-card">
+		<div className="wp-block-reubenj-business-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
 			{ mediaURL && (
 				<img
 					className="card-image"

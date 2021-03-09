@@ -33,7 +33,7 @@ import './editor.scss';
 export default function Edit( props ) {
 	const {
 		className,
-		attributes: { fullName, mediaID, mediaURL, website, phone, address },
+		attributes: { fullName, mediaID, mediaURL, website, phone, address, style, backgroundColor, textColor },
 		setAttributes,
 	} = props;
 
@@ -61,33 +61,35 @@ export default function Edit( props ) {
 	}
 
 	return (
-		<div className="wp-block-reubenj-business-card">
+		<div className="wp-block-reubenj-business-card" style={{backgroundColor: backgroundColor, color: textColor}}>
 			<div className="card-image">
 				<MediaUpload
 					onSelect={ onSelectImage }
 					allowedTypes="image"
 					value={ mediaID }
 					render={ ( { open } ) => (
-						<Button
-							className={
-								mediaID
-									? 'image-button'
-									: 'button button-large'
-							}
-							onClick={ open }
-						>
+						<div>
 							{ ! mediaID ? (
-								__( 'Upload Image', 'business-card' )
+								<Button 
+									className={ mediaID
+										? 'image-button'
+										: 'button button-large'
+									}
+									onClick={ open }
+								>
+									__( 'Upload Image', 'business-card' )
+								</Button>
 							) : (
+								<a onClick={ open }>
 								<img
 									src={ mediaURL }
 									alt={ __(
 										'Upload Card Image',
 										'business-card'
 									) }
-								/>
+								/></a>
 							) }
-						</Button>
+						</div>
 					) }
 				/>
 			</div>

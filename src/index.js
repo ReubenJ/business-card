@@ -71,6 +71,10 @@ registerBlockType( 'reubenj/business-card', {
 	supports: {
 		// Removes support for an HTML mode.
 		html: false,
+		color: {
+			background: true,
+			text: true
+		}
 	},
 
 	attributes: {
@@ -103,6 +107,23 @@ registerBlockType( 'reubenj/business-card', {
 			source: 'text',
 			selector: '.address'
 		},
+		style: {
+			type: 'object',
+			default: {
+				color: {
+					background: '#ffffff',
+					text: '#000000'
+				}
+			}
+		},
+		backgroundColor: {
+			type: 'string',
+			default: '#ffffff',
+		},
+		textColor: {
+			type: 'string',
+			default: '#000000',
+		}
 	},
 
 	/**
