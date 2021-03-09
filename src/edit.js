@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { RichText, MediaUpload } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components'
+import { Button } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -33,12 +33,22 @@ import './editor.scss';
 export default function Edit( props ) {
 	const {
 		className,
-		attributes: { fullName, mediaID, mediaURL, website, phone, address, style, backgroundColor, textColor },
+		attributes: {
+			fullName,
+			mediaID,
+			mediaURL,
+			website,
+			phone,
+			address,
+			style,
+			backgroundColor,
+			textColor,
+		},
 		setAttributes,
 	} = props;
 
 	const onChangeName = ( value ) => {
-		setAttributes( { fullName: value });
+		setAttributes( { fullName: value } );
 	};
 
 	const onSelectImage = ( media ) => {
@@ -49,19 +59,22 @@ export default function Edit( props ) {
 	};
 
 	const onChangeWebsite = ( value ) => {
-		setAttributes( { website: value });
-	}
+		setAttributes( { website: value } );
+	};
 
 	const onChangePhone = ( value ) => {
-		setAttributes( { phone: value });
-	}
+		setAttributes( { phone: value } );
+	};
 
 	const onChangeAddress = ( value ) => {
-		setAttributes( { address: value });
-	}
+		setAttributes( { address: value } );
+	};
 
 	return (
-		<div className="wp-block-reubenj-business-card" style={{backgroundColor: backgroundColor, color: textColor}}>
+		<div
+			className="wp-block-reubenj-business-card"
+			style={ { backgroundColor: backgroundColor, color: textColor } }
+		>
 			<div className="card-image">
 				<MediaUpload
 					onSelect={ onSelectImage }
@@ -70,10 +83,11 @@ export default function Edit( props ) {
 					render={ ( { open } ) => (
 						<div>
 							{ ! mediaID ? (
-								<Button 
-									className={ mediaID
-										? 'image-button'
-										: 'button button-large'
+								<Button
+									className={
+										mediaID
+											? 'image-button'
+											: 'button button-large'
 									}
 									onClick={ open }
 								>
@@ -81,13 +95,14 @@ export default function Edit( props ) {
 								</Button>
 							) : (
 								<a onClick={ open }>
-								<img
-									src={ mediaURL }
-									alt={ __(
-										'Upload Card Image',
-										'business-card'
-									) }
-								/></a>
+									<img
+										src={ mediaURL }
+										alt={ __(
+											'Upload Card Image',
+											'business-card'
+										) }
+									/>
+								</a>
 							) }
 						</div>
 					) }
@@ -95,37 +110,25 @@ export default function Edit( props ) {
 			</div>
 			<RichText
 				tagName="h3"
-				placeholder={ __(
-					'Full name...',
-					'business-card'
-				)}
+				placeholder={ __( 'Full name...', 'business-card' ) }
 				value={ fullName }
 				onChange={ onChangeName }
 			/>
 			<RichText
 				tagName="p"
-				placeholder={ __(
-					'Website...',
-					'business-card'
-				)}
+				placeholder={ __( 'Website...', 'business-card' ) }
 				value={ website }
 				onChange={ onChangeWebsite }
 			/>
 			<RichText
 				tagName="p"
-				placeholder={ __(
-					'Phone number...',
-					'business-card'
-				)}
+				placeholder={ __( 'Phone number...', 'business-card' ) }
 				value={ phone }
 				onChange={ onChangePhone }
 			/>
 			<RichText
 				tagName="p"
-				placeholder={ __(
-					'Address...',
-					'business-card'
-				)}
+				placeholder={ __( 'Address...', 'business-card' ) }
 				value={ address }
 				onChange={ onChangeAddress }
 			/>

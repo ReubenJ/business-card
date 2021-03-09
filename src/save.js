@@ -27,17 +27,33 @@ import { RichText } from '@wordpress/block-editor';
 export default function save( props ) {
 	const {
 		className,
-		attributes: { fullName, mediaID, mediaURL, website, phone, address, style, backgroundColor, textColor },
+		attributes: {
+			fullName,
+			mediaID,
+			mediaURL,
+			website,
+			phone,
+			address,
+			style,
+			backgroundColor,
+			textColor,
+		},
 		setAttributes,
 	} = props;
 	var websiteToLink = website;
-	if (website) {
-		if (!website.startsWith("http") || !website.startsWith("https")) {
-		websiteToLink = 'https://'.concat(website);
-	}
+	if ( website ) {
+		if (
+			! website.startsWith( 'http' ) ||
+			! website.startsWith( 'https' )
+		) {
+			websiteToLink = 'https://'.concat( website );
+		}
 	}
 	return (
-		<div className="wp-block-reubenj-business-card" style={{ backgroundColor: backgroundColor, color: textColor }}>
+		<div
+			className="wp-block-reubenj-business-card"
+			style={ { backgroundColor: backgroundColor, color: textColor } }
+		>
 			{ mediaURL && (
 				<img
 					className="card-image"
@@ -47,16 +63,12 @@ export default function save( props ) {
 			) }
 			<RichText.Content
 				tagName="h3"
-				className="fullName"
+				className="full-name"
 				value={ fullName }
 			/>
-			
+
 			<p>
-				<Button
-					className="website"
-					isLink
-					href={ websiteToLink }
-				>
+				<Button className="website" isLink href={ websiteToLink }>
 					{ website }
 				</Button>
 			</p>
@@ -65,7 +77,7 @@ export default function save( props ) {
 				<Button
 					className="phone"
 					isLink
-					href={ 'tel:'.concat(phone) }
+					href={ 'tel:'.concat( phone ) }
 				>
 					{ phone }
 				</Button>
@@ -75,7 +87,9 @@ export default function save( props ) {
 				<Button
 					className="address"
 					isLink
-					href={ 'https://www.google.com/maps/search/'.concat(address) }
+					href={ 'https://www.google.com/maps/search/'.concat(
+						address
+					) }
 				>
 					{ address }
 				</Button>

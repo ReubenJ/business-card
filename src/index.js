@@ -73,15 +73,15 @@ registerBlockType( 'reubenj/business-card', {
 		html: false,
 		color: {
 			background: true,
-			text: true
-		}
+			text: true,
+		},
 	},
 
 	attributes: {
 		fullName: {
 			type: 'string',
 			source: 'text',
-			selector: '.fullName'
+			selector: '.full-name',
 		},
 		mediaID: {
 			type: 'number',
@@ -95,26 +95,26 @@ registerBlockType( 'reubenj/business-card', {
 		website: {
 			type: 'string',
 			source: 'text',
-			selector: '.website'
+			selector: '.website',
 		},
 		phone: {
 			type: 'string',
 			source: 'text',
-			selector: '.phone'
+			selector: '.phone',
 		},
 		address: {
 			type: 'string',
 			source: 'text',
-			selector: '.address'
+			selector: '.address',
 		},
 		style: {
 			type: 'object',
 			default: {
 				color: {
 					background: '#ffffff',
-					text: '#000000'
-				}
-			}
+					text: '#000000',
+				},
+			},
 		},
 		backgroundColor: {
 			type: 'string',
@@ -123,7 +123,7 @@ registerBlockType( 'reubenj/business-card', {
 		textColor: {
 			type: 'string',
 			default: '#000000',
-		}
+		},
 	},
 
 	/**
