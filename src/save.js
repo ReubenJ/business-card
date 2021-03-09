@@ -12,6 +12,8 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,13 +24,62 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save( props ) {
+	const {
+		className,
+		attributes: { fullName, mediaID, mediaURL, website, phone, address },
+		setAttributes,
+	} = props;
+	var websiteToLink = website;
+	if (website) {
+		if (!website.startsWith("http") || !website.startsWith("https")) {
+		websiteToLink = 'https://'.concat(website);
+	}
+	}
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __(
-				'Business Card – hello from the saved content!',
-				'business-card'
+		<div className="wp-block-reubenj-business-card">
+			{ mediaURL && (
+				<img
+					className="card-image"
+					src={ mediaURL }
+					alt={ __( 'Card Image', 'business-card' ) }
+				/>
 			) }
-		</p>
+			<RichText.Content
+				tagName="h3"
+				className="fullName"
+				value={ fullName }
+			/>
+			
+			<p>
+				<Button
+					className="website"
+					isLink
+					href={ websiteToLink }
+				>
+					{ website }
+				</Button>
+			</p>
+
+			<p>
+				<Button
+					className="phone"
+					isLink
+					href={ 'tel:'.concat(phone) }
+				>
+					{ phone }
+				</Button>
+			</p>
+
+			<p>
+				<Button
+					className="address"
+					isLink
+					href={ 'https://www.google.com/maps/search/'.concat(address) }
+				>
+					{ address }
+				</Button>
+			</p>
+		</div>
 	);
 }

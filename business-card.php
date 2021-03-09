@@ -33,7 +33,7 @@ function reubenj_business_card_block_init() {
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
-	wp_set_script_translations( 'reubenj-business-card-block-editor', 'business-card' );
+	wp_set_script_translations( 'reubenj-business-card-block-editor', 'business-card');
 
 	$editor_css = 'build/index.css';
 	wp_register_style(

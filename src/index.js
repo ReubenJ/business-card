@@ -73,6 +73,38 @@ registerBlockType( 'reubenj/business-card', {
 		html: false,
 	},
 
+	attributes: {
+		fullName: {
+			type: 'string',
+			source: 'text',
+			selector: '.fullName'
+		},
+		mediaID: {
+			type: 'number',
+		},
+		mediaURL: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'src',
+		},
+		website: {
+			type: 'string',
+			source: 'text',
+			selector: '.website'
+		},
+		phone: {
+			type: 'string',
+			source: 'text',
+			selector: '.phone'
+		},
+		address: {
+			type: 'string',
+			source: 'text',
+			selector: '.address'
+		},
+	},
+
 	/**
 	 * @see ./edit.js
 	 */

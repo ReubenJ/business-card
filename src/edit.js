@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { RichText, MediaUpload } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components'
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +30,103 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit( props ) {
+	const {
+		className,
+		attributes: { fullName, mediaID, mediaURL, website, phone, address },
+		setAttributes,
+	} = props;
+
+	const onChangeName = ( value ) => {
+		setAttributes( { fullName: value });
+	};
+
+	const onSelectImage = ( media ) => {
+		setAttributes( {
+			mediaURL: media.url,
+			mediaID: media.id,
+		} );
+	};
+
+	const onChangeWebsite = ( value ) => {
+		setAttributes( { website: value });
+	}
+
+	const onChangePhone = ( value ) => {
+		setAttributes( { phone: value });
+	}
+
+	const onChangeAddress = ( value ) => {
+		setAttributes( { address: value });
+	}
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Business Card – hello from the editor!', 'business-card' ) }
-		</p>
+		<div className="wp-block-reubenj-business-card">
+			<div className="card-image">
+				<MediaUpload
+					onSelect={ onSelectImage }
+					allowedTypes="image"
+					value={ mediaID }
+					render={ ( { open } ) => (
+						<Button
+							className={
+								mediaID
+									? 'image-button'
+									: 'button button-large'
+							}
+							onClick={ open }
+						>
+							{ ! mediaID ? (
+								__( 'Upload Image', 'business-card' )
+							) : (
+								<img
+									src={ mediaURL }
+									alt={ __(
+										'Upload Card Image',
+										'business-card'
+									) }
+								/>
+							) }
+						</Button>
+					) }
+				/>
+			</div>
+			<RichText
+				tagName="h3"
+				placeholder={ __(
+					'Full name...',
+					'business-card'
+				)}
+				value={ fullName }
+				onChange={ onChangeName }
+			/>
+			<RichText
+				tagName="p"
+				placeholder={ __(
+					'Website...',
+					'business-card'
+				)}
+				value={ website }
+				onChange={ onChangeWebsite }
+			/>
+			<RichText
+				tagName="p"
+				placeholder={ __(
+					'Phone number...',
+					'business-card'
+				)}
+				value={ phone }
+				onChange={ onChangePhone }
+			/>
+			<RichText
+				tagName="p"
+				placeholder={ __(
+					'Address...',
+					'business-card'
+				)}
+				value={ address }
+				onChange={ onChangeAddress }
+			/>
+		</div>
 	);
 }

@@ -5,5 +5,10 @@
  */
 
 .wp-block-reubenj-business-card {
-	border: 1px dotted #f00;
+	background-color: white;
+	max-width: var(--responsive--aligndefault-width);
+	color: #000;
+	padding: 1em;
+	border-radius: 0.25em;
+	margin: auto;
 }
