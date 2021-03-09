@@ -40,7 +40,7 @@ export default function save( props ) {
 		},
 		setAttributes,
 	} = props;
-	var websiteToLink = website;
+	let websiteToLink = website;
 	if ( website ) {
 		if (
 			! website.startsWith( 'http' ) ||
@@ -52,7 +52,7 @@ export default function save( props ) {
 	return (
 		<div
 			className="wp-block-reubenj-business-card"
-			style={ { backgroundColor: backgroundColor, color: textColor } }
+			style={ { backgroundColor, textColor } }
 		>
 			{ mediaURL && (
 				<img
