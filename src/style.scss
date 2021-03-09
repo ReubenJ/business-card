@@ -7,16 +7,16 @@
 
 .wp-block-reubenj-business-card {
 	padding: 1em;
-    border-radius: 0.5em;
-    max-width: calc(var(--responsive--aligndefault-width)/1.2) !important;
-    margin: auto;
+	border-radius: 0.5em;
+	max-width: calc(var(--responsive--aligndefault-width) / 1.2) !important;
+	margin: auto;
 }
 
-.fullName {
-    margin-top: 0.5em;
-    font-size: 1.5em;
+.full-name {
+	margin-top: 0.5em;
+	font-size: 1.5em;
 }
 
 .wp-block-reubenj-business-card p {
-    font-size: 0.9em;
+	font-size: 0.9em;
 }
