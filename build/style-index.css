@@ -1,8 +1,1 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
-/*# sourceMappingURL=style-index.css.map*/
+.wp-block-reubenj-business-card{padding:1em;border-radius:.5em;max-width:calc(var(--responsive--aligndefault-width)/1.2) !important;margin:auto}.fullName{margin-top:.5em;font-size:1.5em}.wp-block-reubenj-business-card p{font-size:.9em}
