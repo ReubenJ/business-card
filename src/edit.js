@@ -27,7 +27,6 @@ import './editor.scss';
  * editor. This represents what the editor will render when the block is used.
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
- *
  * @return {WPElement} Element to render.
  */
 export default function Edit( props ) {
@@ -73,7 +72,7 @@ export default function Edit( props ) {
 	return (
 		<div
 			className="wp-block-reubenj-business-card"
-			style={ { backgroundColor: backgroundColor, color: textColor } }
+			style={ { backgroundColor, textColor } }
 		>
 			<div className="card-image">
 				<MediaUpload
@@ -91,10 +90,13 @@ export default function Edit( props ) {
 									}
 									onClick={ open }
 								>
-									__( 'Upload Image', 'business-card' )
+									{ __( 'Upload Image', 'business-card' ) }
 								</Button>
 							) : (
-								<a onClick={ open }>
+								<Button
+									onClick={ open }
+									style={ { height: 'unset' } }
+								>
 									<img
 										src={ mediaURL }
 										alt={ __(
@@ -102,7 +104,7 @@ export default function Edit( props ) {
 											'business-card'
 										) }
 									/>
-								</a>
+								</Button>
 							) }
 						</div>
 					) }
@@ -110,25 +112,25 @@ export default function Edit( props ) {
 			</div>
 			<RichText
 				tagName="h3"
-				placeholder={ __( 'Full name...', 'business-card' ) }
+				placeholder={ __( 'Full name…', 'business-card' ) }
 				value={ fullName }
 				onChange={ onChangeName }
 			/>
 			<RichText
 				tagName="p"
-				placeholder={ __( 'Website...', 'business-card' ) }
+				placeholder={ __( 'Website…', 'business-card' ) }
 				value={ website }
 				onChange={ onChangeWebsite }
 			/>
 			<RichText
 				tagName="p"
-				placeholder={ __( 'Phone number...', 'business-card' ) }
+				placeholder={ __( 'Phone number…', 'business-card' ) }
 				value={ phone }
 				onChange={ onChangePhone }
 			/>
 			<RichText
 				tagName="p"
-				placeholder={ __( 'Address...', 'business-card' ) }
+				placeholder={ __( 'Address…', 'business-card' ) }
 				value={ address }
 				onChange={ onChangeAddress }
 			/>
