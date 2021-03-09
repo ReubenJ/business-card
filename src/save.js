@@ -52,7 +52,7 @@ export default function save( props ) {
 	return (
 		<div
 			className="wp-block-reubenj-business-card"
-			style={ { backgroundColor, textColor } }
+			style={ { backgroundColor: backgroundColor, textColor: textColor } }
 		>
 			{ mediaURL && (
 				<img

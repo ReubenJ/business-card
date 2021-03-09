@@ -72,7 +72,7 @@ export default function Edit( props ) {
 	return (
 		<div
 			className="wp-block-reubenj-business-card"
-			style={ { backgroundColor, textColor } }
+			style={ { backgroundColor: backgroundColor, textColor: textColor } }
 		>
 			<div className="card-image">
 				<MediaUpload
